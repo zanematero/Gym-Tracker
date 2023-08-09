@@ -1,6 +1,5 @@
 //require mongoose
 const mongoose = require('mongoose')
-//creating shorthand for the schema contructor 
 
 const workoutSchema = new mongoose.Schema({
     title: {

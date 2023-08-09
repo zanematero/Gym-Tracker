@@ -18,6 +18,7 @@ app.get('*', (req, res) => {
     res.status(404).json({ message: 'This URL endpoint does not exist.' })
 })
 
+// database
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         // listen for requests
