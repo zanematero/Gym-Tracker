@@ -1,6 +1,7 @@
-//require mongoose
+// require mongoose
 const mongoose = require('mongoose')
 
+// create schema
 const workoutSchema = new mongoose.Schema({
     title: {
         type: String,
