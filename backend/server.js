@@ -2,18 +2,18 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 const workoutController = require('./controllers/workoutsController')
-//const cors = require('cors')
 
 // express set up
 const express = require('express')
 const app = express()
 
 // middleware
-//app.use(cors({
-//    origin: '*', 
-//    credentials: true,
-//    optionSuccessStatus: 200,
-//}))
+const cors = require('cors')
+app.use(cors({
+    origin: '*', 
+    credentials: true,
+    optionSuccessStatus: 200,
+}))
 app.use(express.json())
 
 // controllers
