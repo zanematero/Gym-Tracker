@@ -3,7 +3,7 @@ import { createContext, useReducer, useContext } from "react";
 const WorkoutContext = createContext();
 
 const getWorkouts = (weekday) => {
-    return {workouts: JSON.parse(localStorage.getItem(weekday)) || []};
+    return { workouts: JSON.parse(localStorage.getItem(weekday)) || [] };
 }
 
 const reducer = (state, action) => {
@@ -12,13 +12,30 @@ const reducer = (state, action) => {
             const updatedWorkouts = [...state.weekdays[action.weekday].workouts, action.workout];
             localStorage.setItem(action.weekday, JSON.stringify(updatedWorkouts));
             return {
-                ...state, weekdays: { ...state.weekdays,[action.weekday]: { ...state.weekdays[action.weekday], workouts: updatedWorkouts, }},
-            };
-        case 'GET_WORKOUTS':
+                ...state, weekdays: {
+                    ...state.weekdays, [action.weekday]: {
+                        workouts: updatedWorkouts
+                    }
+                }
+            }
+        case 'DELETE_WORKOUT':
+            const remainingWorkouts = state.weekdays[action.weekday].workouts.filter(
+                workout => workout._id !== action.workout._id
+            );
+            console.log('Remaining Workouts:', remainingWorkouts);
+            localStorage.setItem(action.weekday, JSON.stringify(remainingWorkouts));
             return {
                 ...state, weekdays: {
                     ...state.weekdays, [action.weekday]: {
-                        ...state.weekdays[action.weekday], workouts: action.workouts,
+                        workouts: remainingWorkouts
+                    }
+                }
+            }
+        case 'GET_WORKOUT':
+            return {
+                ...state, weekdays: {
+                    ...state.weekdays, [action.weekday]: {
+                        workouts: action.workouts
                     }
                 }
             }
@@ -36,9 +53,9 @@ const WorkoutProvider = ({ children }) => {
             Thursday: getWorkouts('Thursday'),
             Friday: getWorkouts('Friday'),
             Saturday: getWorkouts('Saturday'),
-            Sunday: getWorkouts('Sunday')
+            Sunday: getWorkouts('Sunday'),
         }
-    })
+    });
 
     return (
         <WorkoutContext.Provider value={{ state, dispatch }}>

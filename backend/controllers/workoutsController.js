@@ -69,7 +69,7 @@ workouts.delete('/:id', async (req, res) => {
     const deletedWorkout = await Workout.findByIdAndDelete({ _id: id})
 
     if (!deletedWorkout) {
-        res.status(400).json({ error: error.message })
+        res.status(400).json({ error: 'This workout does not exist' })
     }
 
     res.status(200).json(deletedWorkout)

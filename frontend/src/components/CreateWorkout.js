@@ -15,7 +15,7 @@ function CreateWorkout({ weekday }) {
         e.preventDefault()
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_BASEURL}/workouts/`, {
+            const response = await fetch(`${process.env.REACT_APP_BASEURL}/workouts`, {
                 method: 'POST',
                 body: JSON.stringify(workout),
                 headers: {
@@ -28,7 +28,7 @@ function CreateWorkout({ weekday }) {
             setSets(0)
             setReps(0)
             setWeight(0)
-            console.log(weekday)
+            console.log(json)
         } catch (err) {
             console.log(err)
         }
