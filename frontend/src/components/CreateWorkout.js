@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useWorkoutContext } from "../context/WorkoutContext"
 
-function CreateWorkout() {
+function CreateWorkout({ weekday }) {
+     
+    const { dispatch } = useWorkoutContext()
 
     const [title, setTitle] = useState('')
     const [sets, setSets] = useState(0)
@@ -12,13 +15,20 @@ function CreateWorkout() {
         e.preventDefault()
 
         try {
-            await fetch(`${process.env.REACT_APP_BASEURL}/workouts/`, {
+            const response = await fetch(`${process.env.REACT_APP_BASEURL}/workouts/`, {
                 method: 'POST',
                 body: JSON.stringify(workout),
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            })
+            })            
+            const json = await response.json()
+            dispatch({type: 'ADD_WORKOUT', weekday: weekday, workout: json})
+            setTitle('')
+            setSets(0)
+            setReps(0)
+            setWeight(0)
+            console.log(weekday)
         } catch (err) {
             console.log(err)
         }
@@ -28,7 +38,7 @@ function CreateWorkout() {
     return (
         <div className="create-workout" onSubmit={handleSubmit}>
             <form>
-                <h4>Create a new workout for</h4>
+                <h4>Create a new workout for {weekday}</h4>
                 <label>Title:</label>
                 <input
                     type='text'
@@ -53,7 +63,7 @@ function CreateWorkout() {
                     onChange={(e) => setWeight(e.target.value)}
                     value={weight}
                 />
-                <button>Add Workout</button>
+                <button type="submit">Add Workout</button>
             </form>
         </div>
     )

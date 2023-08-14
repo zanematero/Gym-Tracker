@@ -6,7 +6,6 @@ function App() {
     <div className="App">
       <h1>Welcome to Gym-Tracker!</h1>
       <WorkoutContainer />
-      <CreateWorkout />
     </div>
   );
 }
