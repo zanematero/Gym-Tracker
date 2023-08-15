@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import WorkoutItem from './WorkoutItem.js'
 import CreateWorkout from "./CreateWorkout.js"
 import { useWorkoutContext } from "../context/WorkoutContext.js"
+import TodaysWorkout from "./TodaysWorkout.js";
 
 function WorkoutContainer() {
 
@@ -17,8 +18,10 @@ function WorkoutContainer() {
         fetchWorkouts()
     }, [dispatch])
 
+    
     return (
         <div>
+            <TodaysWorkout />
             {weekdays.map((weekday) => (
                 <div className="weekday" key={weekday}>
                     <h3>Workouts for {weekday}:</h3>
