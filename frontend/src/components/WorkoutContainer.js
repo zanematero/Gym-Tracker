@@ -3,6 +3,7 @@ import WorkoutItem from './WorkoutItem.js'
 import CreateWorkout from "./CreateWorkout.js"
 import { useWorkoutContext } from "../context/WorkoutContext.js"
 import TodaysWorkout from "./TodaysWorkout.js";
+import WorkoutNavbar from "./WorkoutNavbar.js";
 
 function WorkoutContainer() {
 
@@ -21,7 +22,7 @@ function WorkoutContainer() {
     
     return (
         <div>
-            <TodaysWorkout />
+            <WorkoutNavbar />
             {weekdays.map((weekday) => (
                 <div className="weekday" key={weekday}>
                     <h3>Workouts for {weekday}:</h3>
@@ -34,7 +35,7 @@ function WorkoutContainer() {
                             />
                         ))
                     ) : (
-                        <p>No workouts available for {weekday}</p>
+                        <p>No workouts created yet for {weekday}, let's get to it!</p>
                     )}
                     <CreateWorkout weekday={weekday} />
                 </div>

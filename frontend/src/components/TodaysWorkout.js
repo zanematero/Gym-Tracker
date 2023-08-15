@@ -1,6 +1,7 @@
 import { useWorkoutContext } from "../context/WorkoutContext.js"
+import CreateWorkout from "./CreateWorkout.js";
 import WorkoutItem from './WorkoutItem.js';
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 function TodaysWorkout() {
 
@@ -25,7 +26,7 @@ function TodaysWorkout() {
         } else if (day === 6) {
             return 'Saturday';
         }
-    }); 
+    });
 
     return (
         <div className='todays-workout'>
@@ -39,7 +40,10 @@ function TodaysWorkout() {
                     />
                 ))
             ) : (
-                <p>No workouts available for {todaysWeekday}</p>
+                <div>
+                    <p>No workouts created yet for {todaysWeekday}, let's get to it!</p>
+                    <CreateWorkout weekday={todaysWeekday}/>
+                </div>
             )}
         </div>
     )

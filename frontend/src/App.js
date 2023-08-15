@@ -1,11 +1,16 @@
-import CreateWorkout from "./components/CreateWorkout";
 import WorkoutContainer from "./components/WorkoutContainer";
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to Gym-Tracker!</h1>
-      <WorkoutContainer />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/workouts" element={<WorkoutContainer />}/>
+      </Routes>
     </div>
   );
 }
