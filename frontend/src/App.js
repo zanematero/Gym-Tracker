@@ -9,6 +9,7 @@ import ThursdayWorkouts from "./components/weekdayworkouts/ThursdayWorkouts"
 import FridayWorkouts from "./components/weekdayworkouts/FridayWorkouts"
 import SaturdayWorkouts from "./components/weekdayworkouts/SaturdayWorkouts"
 import SundayWorkouts from "./components/weekdayworkouts/SundayWorkouts"
+import UpdateWorkoutForm from "./components/UpdateWorkoutForm";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="saturday" element={<SaturdayWorkouts/>}/>
           <Route path="sunday" element={<SundayWorkouts/>}/>
         </Route>
+        <Route path="/update-workout" element={<UpdateWorkoutForm/>}/>
       </Routes>
     </div>
   );

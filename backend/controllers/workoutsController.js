@@ -47,10 +47,10 @@ workouts.put('/:id', async (req, res) => {
         return res.status(404).json({ error: 'This workout is not a valid id' })
     }
 
-    const updatedWorkout = await Workout.findOneAndUpdate({ _id: id}, {
-        ...req.body
+    const updatedWorkout = await Workout.findByIdAndUpdate(id, req.body, {
+        new: true
     })
-
+    
     if (!updatedWorkout) {
         return res.status(404).json({ error: 'This workout does not exist' })
     }

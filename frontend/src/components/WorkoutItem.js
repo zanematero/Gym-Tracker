@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useWorkoutContext } from "../context/WorkoutContext.js"
 
 function WorkoutItem({ workout, weekday }) {
@@ -29,6 +30,7 @@ function WorkoutItem({ workout, weekday }) {
             <div>Reps: {workout.reps}</div>
             <div>Weight: {workout.weight}</div>
             <div>id: {workout._id}</div>
+            <Link to="/update-workout" state={{ workout, weekday }}>Update this workout</Link>
             <button onClick={() => {handleDelete(workout._id)}}>Delete Workout</button>
         </div>
     )

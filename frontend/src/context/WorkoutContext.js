@@ -9,12 +9,12 @@ const getWorkouts = (weekday) => {
 const reducer = (state, action) => {
     switch (action.type) {
         case 'ADD_WORKOUT':
-            const updatedWorkouts = [...state.weekdays[action.weekday].workouts, action.workout];
-            localStorage.setItem(action.weekday, JSON.stringify(updatedWorkouts));
+            const addedWorkouts = [...state.weekdays[action.weekday].workouts, action.workout];
+            localStorage.setItem(action.weekday, JSON.stringify(addedWorkouts));
             return {
                 ...state, weekdays: {
                     ...state.weekdays, [action.weekday]: {
-                        workouts: updatedWorkouts
+                        workouts: addedWorkouts
                     }
                 }
             }
@@ -22,7 +22,6 @@ const reducer = (state, action) => {
             const remainingWorkouts = state.weekdays[action.weekday].workouts.filter(
                 workout => workout._id !== action.workout._id
             );
-            console.log('Remaining Workouts:', remainingWorkouts);
             localStorage.setItem(action.weekday, JSON.stringify(remainingWorkouts));
             return {
                 ...state, weekdays: {
@@ -36,6 +35,18 @@ const reducer = (state, action) => {
                 ...state, weekdays: {
                     ...state.weekdays, [action.weekday]: {
                         workouts: action.workouts
+                    }
+                }
+            }
+        case 'UPDATE_WORKOUT':
+            const newWorkouts = state.weekdays[action.weekday].workouts.map((w => (
+                w._id === action.workout._id ? { ...w, ...action.workout } : w
+            )));
+            localStorage.setItem(action.weekday, JSON.stringify(newWorkouts));
+            return {
+                ...state, weekdays: {
+                    ...state.weekdays, [action.weekday]: {
+                        workouts: newWorkouts
                     }
                 }
             }

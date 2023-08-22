@@ -17,6 +17,7 @@ function WorkoutContainer() {
         <div>
             <WorkoutNavbar />
             <Outlet />
+            <h3>Click a day to view your workouts for that day!</h3>
         </div>
     );
 }
