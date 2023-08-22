@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { WorkoutProvider } from './context/WorkoutContext';
 import { BrowserRouter } from 'react-router-dom';
+import './style/index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

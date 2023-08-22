@@ -1,0 +1,25 @@
+body {
+  background-color: #F5F5F5;
+}
+
+.home {
+  background-color: #969696;
+}
+
+.nav {
+  background-color: #131316;
+}
+.nav .pending {
+  background-color: #253D5B;
+  color: #F5F5F5;
+  text-decoration: none;
+}
+.nav .pending:hover {
+  background-color: #823329;
+  color: #F5F5F5;
+}
+.nav .active {
+  background-color: #F5F5F5 !important;
+  color: #131316 !important;
+  text-decoration: none;
+}/*# sourceMappingURL=index.css.map */

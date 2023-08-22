@@ -1,12 +1,16 @@
 import { NavLink } from "react-router-dom"
 
-function Navbar () {
+function Navbar() {
     return (
-        <div>
-            <NavLink to="/">
+        <div className="nav">
+            <NavLink className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : "pending"
+            } to="/">
                 Home
             </NavLink>
-            <NavLink to="/workouts">
+            <NavLink  className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : "pending"
+            } to="/workouts">
                 Workouts
             </NavLink>
         </div>

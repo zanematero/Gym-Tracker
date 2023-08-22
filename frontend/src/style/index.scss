@@ -1,0 +1,30 @@
+@use 'variables' as v;
+
+body {
+    background-color: v.$white ;
+}
+
+.home {
+    background-color: v.$grey;
+}
+
+.nav {
+    background-color: v.$black;
+
+    .pending {
+        background-color: v.$blue;
+        color: v.$white;
+        text-decoration: none;
+
+        &:hover {
+            background-color: v.$red;
+            color: v.$white;
+        }
+    }
+
+    .active {
+        background-color: v.$white !important;
+        color: v.$black !important;
+        text-decoration: none;
+    }
+}
