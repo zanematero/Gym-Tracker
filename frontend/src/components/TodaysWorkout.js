@@ -1,5 +1,4 @@
 import { useWorkoutContext } from "../context/WorkoutContext.js"
-import CreateWorkout from "./CreateWorkout.js";
 import WorkoutItem from './WorkoutItem.js';
 import { useState } from 'react'
 
@@ -30,20 +29,24 @@ function TodaysWorkout() {
 
     return (
         <div className='todays-workout'>
-            <h1>Start stretching! Today's workouts for {todaysWeekday} are:</h1>
             {state.weekdays[todaysWeekday].workouts.length > 0 ? (
-                state.weekdays[todaysWeekday].workouts.map((workout) => (
-                    <WorkoutItem
-                        weekday={todaysWeekday}
-                        workout={workout}
-                        key={workout._id}
-                    />
-                ))
+                <h1>Start stretching! Today's workouts for {todaysWeekday} are:</h1>
             ) : (
                 <div>
-                    <p>No workouts created yet for {todaysWeekday}, let's get to it!</p>
-                    <CreateWorkout weekday={todaysWeekday}/>
+                    <h2>No workouts created yet for {todaysWeekday}, click on the workouts tab to get started!</h2>
                 </div>
+            )}
+            {state.weekdays[todaysWeekday].workouts.length > 0 ? (
+                state.weekdays[todaysWeekday].workouts.map((workout) => (
+                    <div className="workout">
+                        <h1>{workout.title}</h1>
+                        <h2>Sets: {workout.sets}</h2>
+                        <h2>Reps: {workout.reps}</h2>
+                        <h2>Weight: {workout.weight}</h2>
+                    </div>
+                ))
+            ) : (
+                <></>
             )}
         </div>
     )

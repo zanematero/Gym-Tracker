@@ -4,13 +4,13 @@ function Navbar() {
     return (
         <div className="nav">
             <NavLink className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "active" : "pending"
+                isPending ? "" : isActive ? "active" : "inactive"
             } to="/">
                 Home
             </NavLink>
-            <NavLink  className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "active" : "pending"
-            } to="/workouts">
+            <NavLink className={({ isActive, isPending }) =>
+                isPending ? "" : isActive ? "active" : "inactive"
+            } to='/workouts'>
                 Workouts
             </NavLink>
         </div>

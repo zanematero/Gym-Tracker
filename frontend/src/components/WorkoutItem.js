@@ -23,15 +23,13 @@ function WorkoutItem({ workout, weekday }) {
     }
 
     return (
-        <div className="Workout">
-            <h3>Workout:</h3>
-            <div>Title: {workout.title}</div>
-            <div>Sets: {workout.sets}</div>
-            <div>Reps: {workout.reps}</div>
-            <div>Weight: {workout.weight}</div>
-            <div>id: {workout._id}</div>
-            <Link to="/update-workout" state={{ workout, weekday }}>Update this workout</Link>
-            <button onClick={() => {handleDelete(workout._id)}}>Delete Workout</button>
+        <div className="workout">
+            <h1>{workout.title}</h1>
+            <h2>Sets: {workout.sets}</h2>
+            <h2>Reps: {workout.reps}</h2>
+            <h2>Weight: {workout.weight}</h2>
+            <span><h3><Link className="link" to="/update-workout" state={{ workout, weekday }}>Update</Link></h3></span>
+            <span><button className="delete" onClick={() => {handleDelete(workout._id)}}>Delete</button></span>
         </div>
     )
 }

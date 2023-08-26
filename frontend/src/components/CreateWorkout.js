@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useWorkoutContext } from "../context/WorkoutContext"
 
 function CreateWorkout({ weekday }) {
-     
+
     const { dispatch } = useWorkoutContext()
 
     const [title, setTitle] = useState('')
@@ -21,9 +21,9 @@ function CreateWorkout({ weekday }) {
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            })            
+            })
             const json = await response.json()
-            dispatch({type: 'ADD_WORKOUT', weekday: weekday, workout: json})
+            dispatch({ type: 'ADD_WORKOUT', weekday: weekday, workout: json })
             setTitle('')
             setSets(0)
             setReps(0)
@@ -38,32 +38,40 @@ function CreateWorkout({ weekday }) {
     return (
         <div className="create-workout" onSubmit={handleSubmit}>
             <form>
-                <h4>Create a new workout for {weekday}</h4>
-                <label>Title:</label>
-                <input
-                    type='text'
-                    onChange={(e) => setTitle(e.target.value)}
-                    value={title}
-                />
-                <label>Sets:</label>
-                <input
-                    type='text'
-                    onChange={(e) => setSets(e.target.value)}
-                    value={sets}
-                />
-                <label>Reps:</label>
-                <input
-                    type='text'
-                    onChange={(e) => setReps(e.target.value)}
-                    value={reps}
-                />
-                <label>Weight:</label>
-                <input
-                    type='text'
-                    onChange={(e) => setWeight(e.target.value)}
-                    value={weight}
-                />
-                <button type="submit">Add Workout</button>
+                <h2>Create a new workout</h2>
+                <div>
+                    <label>Title: </label>
+                    <input
+                        type='text'
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                    />
+                </div>
+                <div>
+                    <label>Sets: </label>
+                    <input
+                        type='text'
+                        onChange={(e) => setSets(e.target.value)}
+                        value={sets}
+                    />
+                </div>
+                <div>
+                    <label>Reps: </label>
+                    <input
+                        type='text'
+                        onChange={(e) => setReps(e.target.value)}
+                        value={reps}
+                    />
+                </div>
+                <div>
+                    <label>Weight: </label>
+                    <input
+                        type='text'
+                        onChange={(e) => setWeight(e.target.value)}
+                        value={weight}
+                    />
+                </div>
+                <button className="add" type="submit">Add Workout</button>
             </form>
         </div>
     )

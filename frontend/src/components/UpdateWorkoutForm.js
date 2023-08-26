@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 function UpdateWorkoutForm() {
     const navigate = useNavigate();
     const location = useLocation()
-    const { workout , weekday } = location.state
+    const { workout, weekday } = location.state
 
     const { dispatch } = useWorkoutContext()
 
@@ -28,7 +28,7 @@ function UpdateWorkoutForm() {
             })
             const json = await response.json()
             dispatch({ type: 'UPDATE_WORKOUT', workout: json, weekday: weekday })
-            console.log(json)           
+            console.log(json)
             navigate(`/workouts/${weekday}`)
         } catch (err) {
             console.log(err)
@@ -37,32 +37,40 @@ function UpdateWorkoutForm() {
     return (
         <div className="update-workout" onSubmit={handleUpdate}>
             <form>
-                <h4>Change your {workout.title} workout</h4>
-                <label>Title:</label>
-                <input
-                    type='text'
-                    onChange={(e) => setTitle(e.target.value)}
-                    value={title}
-                />
-                <label>Sets:</label>
-                <input
-                    type='text'
-                    onChange={(e) => setSets(e.target.value)}
-                    value={sets}
-                />
-                <label>Reps:</label>
-                <input
-                    type='text'
-                    onChange={(e) => setReps(e.target.value)}
-                    value={reps}
-                />
-                <label>Weight:</label>
-                <input
-                    type='text'
-                    onChange={(e) => setWeight(e.target.value)}
-                    value={weight}
-                />
-                <button type="submit">Update Workout</button>
+                <h2>Change your &nbsp; "{workout.title}" &nbsp; workout</h2>
+                <div>
+                    <label>Title:</label>
+                    <input
+                        type='text'
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                    />
+                </div>
+                <div>
+                    <label>Sets:</label>
+                    <input
+                        type='text'
+                        onChange={(e) => setSets(e.target.value)}
+                        value={sets}
+                    />
+                </div>
+                <div>
+                    <label>Reps:</label>
+                    <input
+                        type='text'
+                        onChange={(e) => setReps(e.target.value)}
+                        value={reps}
+                    />
+                </div>
+                <div>
+                    <label>Weight:</label>
+                    <input
+                        type='text'
+                        onChange={(e) => setWeight(e.target.value)}
+                        value={weight}
+                    />
+                </div>
+                <button className="update" type="submit">Update Workout</button>
             </form>
         </div>
     )

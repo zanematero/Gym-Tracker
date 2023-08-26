@@ -7,21 +7,24 @@ function MondayWorkouts() {
     const { state } = useWorkoutContext();
 
     return (
-        <div>
+        <div className="workout-day">
             <h2>Workouts for Monday:</h2>
-            {state.weekdays['Monday'].workouts.length > 0 ? (
-                state.weekdays['Monday'].workouts.map((workout) => (
-                    <WorkoutItem 
-                    workout={workout}
-                    weekday={'Monday'}
-                    key={workout._id}
-                    />
-                    
-                ))
-            ) : (
-                <p>No workouts created yet for Monday, let's get to it!</p>
-            )}
-            <CreateWorkout weekday={'Monday'} />
+            <hr></hr>
+            <div className="workout-container">
+                <CreateWorkout weekday={'Monday'} />
+                {state.weekdays['Monday'].workouts.length > 0 ? (
+                    state.weekdays['Monday'].workouts.map((workout) => (
+                        <WorkoutItem
+                            workout={workout}
+                            weekday={'Monday'}
+                            key={workout._id}
+                        />
+
+                    ))
+                ) : (
+                    <></>
+                )}
+            </div>
         </div>
     )
 }

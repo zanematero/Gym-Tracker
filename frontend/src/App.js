@@ -10,6 +10,7 @@ import FridayWorkouts from "./components/weekdayworkouts/FridayWorkouts"
 import SaturdayWorkouts from "./components/weekdayworkouts/SaturdayWorkouts"
 import SundayWorkouts from "./components/weekdayworkouts/SundayWorkouts"
 import UpdateWorkoutForm from "./components/UpdateWorkoutForm";
+import None from "./components/None"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/workouts/" element={<WorkoutContainer />} >
+          <Route index element={<None/>}/>
           <Route path="monday" element={<MondayWorkouts/>}/>
           <Route path="tuesday" element={<TuesdayWorkouts/>}/>
           <Route path="wednesday" element={<WednesdayWorkouts/>}/>

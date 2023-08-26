@@ -1,25 +1,220 @@
 body {
-  background-color: #F5F5F5;
+  background: #969696;
+  font-family: "Gill Sans";
 }
 
 .home {
-  background-color: #969696;
+  background: #F5F5F5;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
 }
 
 .nav {
-  background-color: #131316;
+  min-height: 100%;
+  background: #131316;
+  padding: min(0.5rem, 10%);
+  border-radius: 10rem;
 }
-.nav .pending {
-  background-color: #253D5B;
+.nav .inactive {
+  padding: 0.25rem;
+  border-radius: 3rem;
+  background: #131316;
   color: #F5F5F5;
   text-decoration: none;
+  font-size: 200%;
+  margin-inline: 2rem;
 }
-.nav .pending:hover {
-  background-color: #823329;
+.nav .inactive:hover {
+  background: #131316;
   color: #F5F5F5;
 }
 .nav .active {
-  background-color: #F5F5F5 !important;
+  margin-inline: 2rem;
+  padding: 0.25rem;
+  border-radius: 3rem;
+  font-size: 200%;
+  background: #F5F5F5 !important;
   color: #131316 !important;
   text-decoration: none;
+}
+
+.workout {
+  text-align: center;
+  background: #823329;
+  color: #F5F5F5;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 1rem;
+}
+.workout .link {
+  font-family: "Gill Sans";
+  border: none;
+  text-decoration: none;
+  border-radius: 1rem;
+  background: #131316;
+  color: #F5F5F5;
+  padding: 0.25rem;
+}
+.workout .link:hover {
+  background: #F5F5F5;
+  color: #131316;
+}
+.workout .delete {
+  font-family: "Gill Sans";
+  border: none;
+  text-decoration: none;
+  border-radius: 1rem;
+  background: #131316;
+  color: #F5F5F5;
+  padding: 0.25rem;
+  font-weight: bolder;
+  font-size: larger;
+}
+.workout .delete:hover {
+  background: #F5F5F5;
+  color: #131316;
+}
+.workout span {
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.workout-navbar {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #969696;
+  padding-top: 1rem;
+}
+.workout-navbar .inactive {
+  padding: 0.25rem;
+  border-radius: 3rem;
+  background-color: #969696;
+  color: #131316;
+  text-decoration: none;
+  font-size: 200%;
+  margin-inline: 2rem;
+}
+.workout-navbar .inactive:hover {
+  background: #131316;
+  color: #F5F5F5;
+}
+.workout-navbar .active {
+  margin-inline: 2rem;
+  padding: 0.25rem;
+  border-radius: 1.5rem 1.5rem 0 0;
+  font-size: 200%;
+  background: #F5F5F5 !important;
+  color: #131316 !important;
+  text-decoration: none;
+}
+
+.unselected {
+  border-radius: 3rem;
+  padding: 5rem;
+  text-align: center;
+  background-color: #F5F5F5;
+}
+
+.workout-day {
+  background-color: #F5F5F5;
+  border-radius: 3rem;
+  padding: 1rem 3rem 3rem 3rem;
+  display: block;
+}
+.workout-day p {
+  padding-left: 5rem;
+  margin: auto;
+  text-align: center;
+}
+
+.workout-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.create-workout {
+  color: white;
+  text-align: center;
+  background-color: #253D5B;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  min-height: 20rem;
+}
+.create-workout label {
+  width: auto;
+}
+.create-workout input[type=text] {
+  color: white;
+  background-color: #253D5B;
+  padding: 0.25rem;
+  width: 50%;
+  display: inline-block;
+  border: none;
+  border-bottom: 2px #F5F5F5 solid;
+  margin: 1rem;
+}
+.create-workout .add {
+  font-family: "Gill Sans";
+  border: none;
+  text-decoration: none;
+  border-radius: 1rem;
+  background: #131316;
+  color: #F5F5F5;
+  padding: 0.25rem;
+  font-weight: bolder;
+  font-size: larger;
+}
+.create-workout .add:hover {
+  background: #F5F5F5;
+  color: #131316;
+}
+
+.none {
+  text-align: center;
+  background-color: #F5F5F5;
+  border-radius: 1rem;
+  padding: 3rem;
+  margin: 1rem;
+}
+
+.update-workout {
+  color: white;
+  text-align: center;
+  background-color: #253D5B;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  min-height: 20rem;
+  font-size: larger;
+}
+.update-workout label {
+  width: auto;
+}
+.update-workout input[type=text] {
+  color: white;
+  background-color: #253D5B;
+  padding: 0.25rem;
+  width: 50%;
+  display: inline-block;
+  border: none;
+  border-bottom: 2px #F5F5F5 solid;
+  margin: 1rem;
+}
+.update-workout .update {
+  font-family: "Gill Sans";
+  border: none;
+  text-decoration: none;
+  border-radius: 1rem;
+  background: #131316;
+  color: #F5F5F5;
+  padding: 0.25rem;
+  font-weight: bolder;
+  font-size: larger;
+}
+.update-workout .update:hover {
+  background: #F5F5F5;
+  color: #131316;
 }/*# sourceMappingURL=index.css.map */
