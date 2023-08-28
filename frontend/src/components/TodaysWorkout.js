@@ -1,5 +1,4 @@
 import { useWorkoutContext } from "../context/WorkoutContext.js"
-import WorkoutItem from './WorkoutItem.js';
 import { useState } from 'react'
 
 function TodaysWorkout() {

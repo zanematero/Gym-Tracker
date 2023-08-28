@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function WorkoutNavbar() {
-
     return (
         <div>
             <div className="workout-navbar">
