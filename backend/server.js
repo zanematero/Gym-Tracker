@@ -13,7 +13,7 @@ const app = express()
 const cors = require('cors')
 app.use(cors({
     origin: function (origin, callback) {
-        if (!origin || [`https://gym-tracker-client-4rt95oda1-zanematero.vercel.app/`].indexOf(origin) !== -1) {
+        if (!origin || [`https://gym-tracker-client-zanematero.vercel.app/`].indexOf(origin) !== -1) {
             callback(null, true);
         } else {
             callback(new Error('URL not allowed by CORS'))
