@@ -11,7 +11,7 @@ function Navbar() {
         console.log("starting handling logout")
         e.preventDefault()
 
-        const response = await fetch(`${process.env.REACT_APP_BASEURL}/auth/logout`, {
+        const response = await fetch(`https://gym-tracker-api.vercel.app/auth/logout`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

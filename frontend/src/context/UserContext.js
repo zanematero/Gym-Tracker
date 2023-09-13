@@ -8,7 +8,7 @@ function UserContextProvider({ children }) {
     useEffect(() => {
         const fetchCurrentUser = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_BASEURL}/auth/current`, {
+                const response = await fetch(`https://gym-tracker-api.vercel.app/auth/current`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     },

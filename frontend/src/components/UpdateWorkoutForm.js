@@ -19,7 +19,7 @@ function UpdateWorkoutForm() {
         e.preventDefault()
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_BASEURL}/workouts/${workout._id}`, {
+            const response = await fetch(`https://gym-tracker-api.vercel.app/workouts/${workout._id}`, {
                 method: 'PUT',
                 body: JSON.stringify({ title: title, sets: sets, reps: reps, weight: weight }),
                 headers: {
