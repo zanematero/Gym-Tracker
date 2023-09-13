@@ -12,12 +12,17 @@ body {
 }
 
 .nav {
-  min-height: 100%;
   background: #131316;
   padding: min(0.5rem, 10%);
   border-radius: 10rem;
+  display: flex;
+  justify-content: space-between;
 }
-.nav .inactive {
+.nav .mainNavLinks {
+  text-align: left;
+}
+.nav .mainNavLinks .inactive {
+  text-align: center;
   padding: 0.25rem;
   border-radius: 3rem;
   background: #131316;
@@ -26,11 +31,12 @@ body {
   font-size: 200%;
   margin-inline: 2rem;
 }
-.nav .inactive:hover {
+.nav .mainNavLinks .inactive:hover {
   background: #131316;
   color: #F5F5F5;
 }
-.nav .active {
+.nav .mainNavLinks .active {
+  text-align: center;
   margin-inline: 2rem;
   padding: 0.25rem;
   border-radius: 3rem;
@@ -38,6 +44,41 @@ body {
   background: #F5F5F5 !important;
   color: #131316 !important;
   text-decoration: none;
+}
+.nav .navLinkContainer {
+  margin-top: 0.5rem;
+  padding-left: 5rem;
+}
+.nav .navLinkContainer .userNavLinks {
+  margin: 1rem;
+  padding: 0.25rem;
+  font-family: "Gill Sans";
+  border: none;
+  text-decoration: none;
+  border-radius: 1rem;
+  background: #823329;
+  color: #F5F5F5;
+  font-weight: bolder;
+  font-size: larger;
+}
+.nav .navLinkContainer .userNavLinks:hover {
+  background: #253D5B;
+}
+.nav .navLinkContainer .userNavButton {
+  margin-top: -0.25rem;
+  margin-right: 0.5rem;
+  padding: 0.25rem;
+  font-family: "Gill Sans";
+  border: none;
+  text-decoration: none;
+  border-radius: 1rem;
+  background: #823329;
+  color: #F5F5F5;
+  font-weight: bolder;
+  font-size: larger;
+}
+.nav .navLinkContainer .userNavButton:hover {
+  background: #253D5B;
 }
 
 .workout {
@@ -123,11 +164,6 @@ body {
   background-color: #F5F5F5;
   padding: 1rem 3rem 3rem 3rem;
   display: block;
-}
-.workout-day p {
-  padding-left: 5rem;
-  margin: auto;
-  text-align: center;
 }
 
 .workout-container {
@@ -220,7 +256,62 @@ body {
   color: #131316;
 }
 
+.workouts-none-text {
+  font-family: "Gill Sans";
+  color: #131316;
+  font-weight: bolder;
+  font-size: larger;
+  padding-left: -5rem;
+  margin: 1rem;
+  text-align: center;
+}
+
+.SignUp,
+.LogIn {
+  color: #131316;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  min-height: 20rem;
+  font-size: larger;
+}
+.SignUp label,
+.LogIn label {
+  width: auto;
+}
+.SignUp input,
+.LogIn input {
+  background-color: #F5F5F5;
+  padding: 0.25rem;
+  width: 50%;
+  display: inline-block;
+  border: none;
+  border-bottom: 2px #131316 solid;
+  margin: 1rem;
+}
+.SignUp .submit,
+.LogIn .submit {
+  font-family: "Gill Sans";
+  border: none;
+  text-decoration: none;
+  border-radius: 1rem;
+  background: #131316;
+  color: #F5F5F5;
+  padding: 0.25rem;
+  font-weight: bolder;
+  font-size: larger;
+}
+.SignUp .submit:hover,
+.LogIn .submit:hover {
+  background: #F5F5F5;
+  color: #131316;
+}
+
 @media (max-width: 1400px) {
+  .workout-navbar {
+    margin: 0 -8px 0 -8px;
+  }
   .workout-day {
     margin: 0 -8px 0 -8px;
     border-radius: 0;
@@ -231,5 +322,91 @@ body {
   .workout-container {
     display: grid;
     grid-template-columns: 1fr;
+  }
+}
+@media only screen and (max-width: 700px) and (min-width: 436px) {
+  .nav {
+    border-radius: 0;
+    margin: -8px;
+  }
+  .nav .mainNavLinks {
+    margin: 8px 0px 8px 0px;
+  }
+  .nav .mainNavLinks .inactive {
+    padding: 0.25rem;
+    border-radius: 1.5rem;
+    font-size: 150%;
+    margin-inline: 0.5rem;
+  }
+  .nav .mainNavLinks .active {
+    margin-inline: 0.5rem;
+    padding: 0.25rem;
+    border-radius: 1.5rem;
+    font-size: 150%;
+  }
+  .nav .navLinkContainer {
+    margin-top: 0.75rem;
+    padding-left: 0rem;
+  }
+  .nav .navLinkContainer .userNavLinks {
+    margin: 0.15rem 0.15rem 0.15rem 0.15rem;
+    padding: 0.2rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: large;
+  }
+  .nav .navLinkContainer .userNavButton {
+    margin: -0.25rem 0.15rem 0.15rem 0.15rem;
+    padding: 0.2rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: large;
+  }
+}
+@media (max-width: 435px) {
+  .workout-day {
+    padding: 0.5rem 1rem 1rem 0.5rem;
+  }
+  .create-workout,
+  .workout {
+    margin: 0rem;
+    margin-bottom: 1rem;
+  }
+  .nav {
+    border-radius: 0;
+    margin: -8px;
+  }
+  .nav .mainNavLinks {
+    margin: 8px 0px 8px 0px;
+  }
+  .nav .mainNavLinks .inactive {
+    padding: 0.25rem;
+    border-radius: 1.5rem;
+    font-size: 150%;
+    margin-inline: 0.5rem;
+  }
+  .nav .mainNavLinks .active {
+    margin-inline: 0.5rem;
+    padding: 0.25rem;
+    border-radius: 1.5rem;
+    font-size: 150%;
+  }
+  .nav .navLinkContainer {
+    margin-top: 0.75rem;
+    padding-left: 0rem;
+  }
+  .nav .navLinkContainer .userNavLinks {
+    margin: 0.15rem;
+    padding: 0.2rem;
+    border-radius: 1rem;
+    font-weight: lighter;
+    font-size: small;
+  }
+  .nav .navLinkContainer .userNavButton {
+    margin: -0.15rem 0.15rem 0.15rem 0.15rem;
+    padding: 0.2rem;
+    border-radius: 1rem;
+    font-weight: lighter;
+    font-size: small;
   }
 }/*# sourceMappingURL=index.css.map */

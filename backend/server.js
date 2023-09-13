@@ -2,6 +2,8 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 const workoutController = require('./controllers/workoutsController')
+const userController = require('./controllers/usersController')
+const authController = require('./controllers/authenticationController')
 
 // express set up
 const express = require('express')
@@ -10,14 +12,22 @@ const app = express()
 // middleware
 const cors = require('cors')
 app.use(cors({
-    origin: '*', 
+    origin: function (origin, callback) {
+        if (!origin || [`http://localhost:${process.env.CORS_PORT}`].indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('URL not allowed by CORS'))
+        }
+    }, 
     credentials: true,
-    optionSuccessStatus: 200,
+    optionsSuccessStatus: 200
 }))
 app.use(express.json())
 
 // controllers
 app.use('/workouts', workoutController)
+app.use('/users', userController)
+app.use('/auth', authController)
 
 // handle other endpoints
 app.get('*', (req, res) => {
@@ -25,7 +35,10 @@ app.get('*', (req, res) => {
 })
 
 // database
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
     .then(() => {
         // listen for requests
         app.listen(process.env.PORT, () => {

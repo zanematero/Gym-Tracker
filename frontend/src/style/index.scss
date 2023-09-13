@@ -14,34 +14,81 @@ body {
 }
 
 .nav {
-    min-height: 100%;
     background: v.$black;
     padding: min(0.5rem, 10%);
     border-radius: 10rem;
+    display: flex;
+    justify-content: space-between;
 
-    .inactive {
-        padding: 0.25rem;
-        border-radius: 3rem;
-        background: v.$black;
-        color: v.$white;
-        text-decoration: none;
-        font-size: 200%;
-        margin-inline: 2rem;
+    .mainNavLinks {
+        text-align: left;
 
-        &:hover {
+        .inactive {
+            text-align: center;
+            padding: 0.25rem;
+            border-radius: 3rem;
             background: v.$black;
             color: v.$white;
+            text-decoration: none;
+            font-size: 200%;
+            margin-inline: 2rem;
+
+            &:hover {
+                background: v.$black;
+                color: v.$white;
+            }
+        }
+
+        .active {
+            text-align: center;
+            margin-inline: 2rem;
+            padding: 0.25rem;
+            border-radius: 3rem;
+            font-size: 200%;
+            background: v.$white !important;
+            color: v.$black !important;
+            text-decoration: none;
         }
     }
 
-    .active {
-        margin-inline: 2rem;
-        padding: 0.25rem;
-        border-radius: 3rem;
-        font-size: 200%;
-        background: v.$white !important;
-        color: v.$black !important;
-        text-decoration: none;
+    .navLinkContainer {
+        margin-top: 0.5rem;
+        padding-left: 5rem;
+
+        .userNavLinks {
+            margin: 1rem;
+            padding: 0.25rem;
+            font-family: "Gill Sans";
+            border: none;
+            text-decoration: none;
+            border-radius: 1rem;
+            background: v.$red;
+            color: v.$white;
+            font-weight: bolder;
+            font-size: larger;
+
+            &:hover {
+                background: v.$blue;
+            }
+        }
+
+        .userNavButton {
+            margin-top: -0.25rem;
+            margin-right: 0.5rem;
+            padding: 0.25rem;
+            font-family: "Gill Sans";
+            border: none;
+            text-decoration: none;
+            border-radius: 1rem;
+            background: v.$red;
+            color: v.$white;
+            font-weight: bolder;
+            font-size: larger;
+
+            &:hover {
+                background: v.$blue;
+            }
+        }
     }
 }
 
@@ -136,12 +183,6 @@ body {
     background-color: v.$white;
     padding: 1rem 3rem 3rem 3rem;
     display: block;
-
-    p {
-        padding-left: 5rem;
-        margin: auto;
-        text-align: center;
-    }
 }
 
 .workout-container {
@@ -242,7 +283,63 @@ body {
     }
 }
 
+.workouts-none-text {
+    font-family: "Gill Sans";
+    color: v.$black;
+    font-weight: bolder;
+    font-size: larger;
+    padding-left: -5rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+.SignUp,
+.LogIn {
+    color: v.$black;
+    text-align: center;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+    min-height: 20rem;
+    font-size: larger;
+
+    label {
+        width: auto;
+    }
+
+    input {
+        background-color: v.$white;
+        padding: 0.25rem;
+        width: 50%;
+        display: inline-block;
+        border: none;
+        border-bottom: 2px v.$black solid;
+        margin: 1rem;
+    }
+
+    .submit {
+        font-family: "Gill Sans";
+        border: none;
+        text-decoration: none;
+        border-radius: 1rem;
+        background: v.$black;
+        color: v.$white;
+        padding: 0.25rem;
+        font-weight: bolder;
+        font-size: larger;
+
+        &:hover {
+            background: v.$white;
+            color: v.$black;
+        }
+    }
+}
+
 @media (max-width: 1400px) {
+    .workout-navbar {
+        margin: 0 -8px 0 -8px;
+    }
+
     .workout-day {
         margin: 0 -8px 0 -8px;
         border-radius: 0;
@@ -252,8 +349,112 @@ body {
         display: none;
 
     }
+
     .workout-container {
         display: grid;
         grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 700px) and (min-width: 436px) {
+    .nav {
+        border-radius: 0;
+        margin: -8px;
+
+        .mainNavLinks {
+            margin: 8px 0px 8px 0px;
+
+            .inactive {
+                padding: 0.25rem;
+                border-radius: 1.5rem;
+                font-size: 150%;
+                margin-inline: 0.5rem;
+            }
+
+            .active {
+                margin-inline: 0.5rem;
+                padding: 0.25rem;
+                border-radius: 1.5rem;
+                font-size: 150%;
+            }
+        }
+
+        .navLinkContainer {
+            margin-top: 0.75rem;
+            padding-left: 0rem;
+
+            .userNavLinks {
+                margin: 0.15rem 0.15rem 0.15rem 0.15rem;
+                padding: 0.2rem;
+                border-radius: 1rem;
+                font-weight: bold;
+                font-size: large;
+            }
+
+            .userNavButton {
+                margin: -0.25rem 0.15rem 0.15rem 0.15rem;
+                padding: 0.2rem;
+                border-radius: 1rem;
+                font-weight: bold;
+                font-size: large;
+            }
+        }
+    }
+}
+
+@media (max-width: 435px) {
+
+    .workout-day {
+        padding: 0.5rem 1rem 1rem 0.5rem
+    }
+
+    .create-workout,
+    .workout {
+        margin: 0rem;
+        margin-bottom: 1rem;
+    }
+
+    .nav {
+        border-radius: 0;
+        margin: -8px;
+
+        .mainNavLinks {
+            margin: 8px 0px 8px 0px;
+
+            .inactive {
+                padding: 0.25rem;
+                border-radius: 1.5rem;
+                font-size: 150%;
+                margin-inline: 0.5rem;
+            }
+
+            .active {
+                margin-inline: 0.5rem;
+                padding: 0.25rem;
+                border-radius: 1.5rem;
+                font-size: 150%;
+            }
+        }
+
+        .navLinkContainer {
+            margin-top: 0.75rem;
+            padding-left: 0rem;
+
+            .userNavLinks {
+                margin: 0.15rem;
+                padding: 0.2rem;
+                border-radius: 1rem;
+                font-weight: lighter;
+                font-size: small;
+            }
+
+            .userNavButton {
+                margin: -0.15rem 0.15rem 0.15rem 0.15rem;
+                padding: 0.2rem;
+                border-radius: 1rem;
+                font-weight: lighter;
+                font-size: small;
+            }
+        }
     }
 }

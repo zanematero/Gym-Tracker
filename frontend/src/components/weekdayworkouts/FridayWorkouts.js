@@ -1,10 +1,17 @@
-import WorkoutItem from "../WorkoutItem"
-import CreateWorkout from "../CreateWorkout"
+import WorkoutItem from "../WorkoutItem";
+import CreateWorkout from "../CreateWorkout";
 import { useWorkoutContext } from "../../context/WorkoutContext";
+import { useUserContext } from "../../context/UserContext"; // Import the user context
 
 function FridayWorkouts() {
-
     const { state } = useWorkoutContext();
+    const { currentUser } = useUserContext(); // Access the current user from the context
+
+    const userSpecificWorkouts = currentUser
+    ? state.weekdays['Friday'].workouts.filter((workout) =>
+          workout.user === currentUser._id
+      )
+    : [];
 
     return (
         <div className="workout-day">
@@ -12,39 +19,20 @@ function FridayWorkouts() {
             <hr></hr>
             <div className="workout-container">
                 <CreateWorkout weekday={'Friday'} />
-                {state.weekdays['Friday'].workouts.length > 0 ? (
-                    state.weekdays['Friday'].workouts.map((workout) => (
+                {userSpecificWorkouts.length > 0 ? (
+                    userSpecificWorkouts.map((workout) => (
                         <WorkoutItem
                             workout={workout}
                             weekday={'Friday'}
                             key={workout._id}
                         />
-
                     ))
                 ) : (
-                    <></>
+                    <p className="workouts-none-text">No workouts created yet for Friday, let's get to it!</p>
                 )}
             </div>
         </div>
-    )
+    );
 }
 
-export default FridayWorkouts
-
-/* {weekdays.map((weekday) => (
-    <div className="weekday-item" key={weekday}>
-        <h3>Workouts for {weekday}:</h3>
-        {state.weekdays[weekday].workouts.length > 0 ? (
-            state.weekdays[weekday].workouts.map((workout) => (
-                <WorkoutItem
-                    weekday={weekday}
-                    workout={workout}
-                    key={workout._id}
-                />
-            ))
-        ) : (
-            <p>No workouts created yet for {weekday}, let's get to it!</p>
-        )}
-        <CreateWorkout weekday={weekday} />
-    </div>
-))} */
+export default FridayWorkouts;

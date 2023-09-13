@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { useWorkoutContext } from "../context/WorkoutContext"
+import { useUserContext } from "../context/UserContext"
 
 function CreateWorkout({ weekday }) {
 
     const { dispatch } = useWorkoutContext()
+    const { currentUser } = useUserContext()
 
     const [title, setTitle] = useState('')
     const [sets, setSets] = useState(0)
@@ -11,7 +13,8 @@ function CreateWorkout({ weekday }) {
     const [weight, setWeight] = useState(0)
 
     const handleSubmit = async (e) => {
-        const workout = { title, sets, reps, weight }
+        const workout = { title, sets, reps, weight, user: currentUser._id }
+        console.log("handle submit's current user: ", currentUser)
         e.preventDefault()
 
         try {
@@ -23,12 +26,12 @@ function CreateWorkout({ weekday }) {
                 }
             })
             const json = await response.json()
-            dispatch({ type: 'ADD_WORKOUT', weekday: weekday, workout: json })
+            dispatch({ type: 'ADD_WORKOUT', weekday: weekday, workout: json, currentUser: currentUser})
             setTitle('')
             setSets(0)
             setReps(0)
             setWeight(0)
-            console.log(json)
+            console.log("new workout", json)
         } catch (err) {
             console.log(err)
         }

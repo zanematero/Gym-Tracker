@@ -6,7 +6,6 @@ function WorkoutItem({ workout, weekday }) {
     const { dispatch } = useWorkoutContext();
 
     const handleDelete = async (id) => {
-        console.log(id)
         try {
             const response = await fetch(`${process.env.REACT_APP_BASEURL}/workouts/${id}`, {
                 method: 'DELETE',

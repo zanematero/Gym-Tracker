@@ -5,9 +5,21 @@ const mongoose = require('mongoose')
 
 // get all workouts
 workouts.get('/', async (req, res) => {
-    const Allworkouts = await Workout.find({}).sort({ createdAt: -1 })
-    res.status(200).json(Allworkouts)
+    try {
+        const [authenticationMethod, token] = req.headers.authorization.split(' ')
+
+        if (authenticationMethod == 'Bearer') {
+            const result = await jwt.decode(token)
+            console.log(result)
+            const { id } = result.value
+            const allWorkouts = await Workout.find({ user: id }).sort({ createdAt: -1 })
+            res.status(200).json(allWorkouts)
+        }
+    } catch {
+        res.status(500).json({ message: 'Server error' })
+    }
 })
+
 
 // get workout by id
 workouts.get('/:id', async (req, res) => {
@@ -21,7 +33,7 @@ workouts.get('/:id', async (req, res) => {
     const workout = await Workout.findById(id)
 
     if (!workout) {
-        return res.status(404).json({ error: "This workout does not exist"})
+        return res.status(404).json({ error: "This workout does not exist" })
     }
 
     res.status(200).json(workout)
@@ -29,12 +41,12 @@ workouts.get('/:id', async (req, res) => {
 
 // create workout
 workouts.post('/', async (req, res) => {
-    const { title, reps, weight, sets } = req.body
+    const { title, reps, weight, sets, user } = req.body
     try {
-        const newWorkout = await Workout.create({title, reps, sets, weight})
-        res.status(200).json(newWorkout)
+        const newWorkout = await Workout.create({ title, reps, sets, weight, user })
+        return res.status(200).json(newWorkout)
     } catch (error) {
-        res.status(400).json({ error: error.message })
+        return res.status(400).json({ error: error.message })
     }
 })
 
@@ -50,7 +62,7 @@ workouts.put('/:id', async (req, res) => {
     const updatedWorkout = await Workout.findByIdAndUpdate(id, req.body, {
         new: true
     })
-    
+
     if (!updatedWorkout) {
         return res.status(404).json({ error: 'This workout does not exist' })
     }
@@ -66,7 +78,7 @@ workouts.delete('/:id', async (req, res) => {
         return res.status(404).json({ error: 'This workout is not a valid id' })
     }
 
-    const deletedWorkout = await Workout.findByIdAndDelete({ _id: id})
+    const deletedWorkout = await Workout.findByIdAndDelete({ _id: id })
 
     if (!deletedWorkout) {
         res.status(400).json({ error: 'This workout does not exist' })

@@ -5,16 +5,19 @@ import reportWebVitals from './reportWebVitals';
 import { WorkoutProvider } from './context/WorkoutContext';
 import { BrowserRouter } from 'react-router-dom';
 import './style/index.css';
+import { UserContextProvider } from './context/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <WorkoutProvider>
-        <App />
-      </WorkoutProvider>
-    </React.StrictMode>
-  </BrowserRouter>
+  <UserContextProvider>
+    <BrowserRouter>
+      <React.StrictMode>
+        <WorkoutProvider>
+          <App />
+        </WorkoutProvider>
+      </React.StrictMode>
+    </BrowserRouter>
+  </UserContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

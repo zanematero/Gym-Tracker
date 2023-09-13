@@ -26,14 +26,20 @@ function UpdateWorkoutForm() {
                     'Content-Type': 'application/json'
                 }
             })
-            const json = await response.json()
-            dispatch({ type: 'UPDATE_WORKOUT', workout: json, weekday: weekday })
-            console.log(json)
-            navigate(`/workouts/${weekday}`)
+            if (response.ok) {
+                const json = await response.json();
+                dispatch({ type: 'UPDATE_WORKOUT', workout: json, weekday: weekday });
+                console.log(json);
+                navigate(`/workouts/${weekday}`);
+                window.location.reload()
+            } else {
+                console.error("Error updating workout. Status:", response.status);
+            }
         } catch (err) {
-            console.log(err)
+            console.error(err);
         }
     }
+
     return (
         <div className="update-workout" onSubmit={handleUpdate}>
             <form>
