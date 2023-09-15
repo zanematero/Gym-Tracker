@@ -7,7 +7,7 @@ function WorkoutItem({ workout, weekday }) {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`${process.env.API_URL}/workouts/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/workouts/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

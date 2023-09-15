@@ -8,7 +8,7 @@ function UserContextProvider({ children }) {
     useEffect(() => {
         const fetchCurrentUser = async () => {
             try {
-                const response = await fetch(`${process.env.API_URL}/auth/current`, {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/current`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     },
