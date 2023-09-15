@@ -14,7 +14,7 @@ function LogIn() {
     async function handleSubmit(e) {
         try {
             e.preventDefault()
-            const response = await fetch(`https://gym-tracker-api.vercel.app/auth/login`, {
+            const response = await fetch(`${process.env.API_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

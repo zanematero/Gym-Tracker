@@ -7,7 +7,7 @@ function WorkoutItem({ workout, weekday }) {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`https://gym-tracker-api.vercel.app/workouts/${id}`, {
+            const response = await fetch(`${process.env.API_URL}/workouts/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

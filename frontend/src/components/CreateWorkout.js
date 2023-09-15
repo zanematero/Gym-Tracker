@@ -18,7 +18,7 @@ function CreateWorkout({ weekday }) {
         e.preventDefault()
 
         try {
-            const response = await fetch(`https://gym-tracker-api.vercel.app/workouts`, {
+            const response = await fetch(`${process.env.API_URL}/workouts`, {
                 method: 'POST',
                 body: JSON.stringify(workout),
                 headers: {
