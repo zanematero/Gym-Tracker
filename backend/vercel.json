@@ -11,20 +11,5 @@
             "src": "/(.*)",
             "dest": "/"
         }
-    ],
-    "headers": [
-        {
-            "source": "/api/(.*)",
-            "headers": [
-                {
-                    "key": "Access-Control-Allow-Origin",
-                    "value": "https://gym-tracker-client-zanematero.vercel.app/"
-                },
-                {
-                    "key": "Access-Control-Allow-Methods",
-                    "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
-                }
-            ]
-        }
     ]
 }
